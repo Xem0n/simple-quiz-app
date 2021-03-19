@@ -1,0 +1,178 @@
+/* Lato (font) */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* Variables */
+:root {
+    --bg-color: #292a2b;
+    --font-color: #fff;
+
+    --start-color: tomato;
+
+    --card-color: #b9aeae0d;
+    --card-hover-color: #3130305e;
+    --wrong-color: tomato;
+    --correct-color: #2a9d8f;
+}
+
+/* Global style */
+body {
+    width: 100vw;
+    max-width: 100%;
+
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    background: var(--bg-color);
+
+    font-family: 'Lato', sans-serif;
+    color: var(--font-color);
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Start */
+.start {
+    min-width: 200px;
+    width: 15vw;
+    min-height: 100px;
+    height: 15vh;
+
+    border-radius: 5%;
+
+    font-size: 2em;
+    background: var(--start-color);
+    border: 1px solid var(--start-color);
+    transition: background 0.2s linear;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.start:hover {
+    background: transparent;
+    color: var(--start-color)
+}
+
+/* Question - answers container */
+.container-game {
+    width: 100%;
+
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.question {
+    text-align: center;
+
+    height: auto;
+
+    margin: 10px;
+}
+
+/* Container with answer cards */
+.answer-container {
+    width: 100%;
+    height: 65vh;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .answer-container {
+        height: 80%;
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Answer card */
+.answer {
+    position: relative;
+
+    border-radius: 2%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 200px;
+
+    padding: 10px;
+
+    background: var(--card-color);
+    transition: background 0.2s linear;
+
+    cursor: pointer;
+}
+
+.answer:hover {
+    background: var(--card-hover-color);
+}
+
+/* Answer overlay */
+.respond {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 0;
+
+    border-radius: 2%;
+
+    background: transparent;
+}
+
+.respond#wrong, .respond#correct {
+    height: 100%;
+
+    animation: 1s slidein ease;
+}
+
+@keyframes slidein {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+.respond#wrong {
+    background: var(--wrong-color);
+}
+
+.respond#correct {
+    background: var(--correct-color);
+}
+
+.answer-text {
+    z-index: 1;
+    
+    user-select: none;
+    font-size: 1.2em;
+}
+
+/* Finish */
+.finish {
+    text-align: center;
+
+    font-size: 2em;
+}
